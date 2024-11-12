@@ -9,6 +9,8 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class BuyingController : ControllerBase
     {
+        Order currentOrder=new Order();
+        
         // GET: api/<BuyingController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -21,7 +23,7 @@ namespace WebApplication1.Controllers
         public string Get(int id)
         {
            
-           return RealData.order1.ToString();
+           return currentOrder.ToString();
         
         }
 
@@ -29,22 +31,22 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public void Post([FromBody] Product product)
         {
-            RealData.order1.AllProducts.Add(product);
+            currentOrder.AllProducts.Add(product);
         }
 
         // PUT api/<BuyingController>/5
         [HttpPut("{id}")]
         public void Put([FromBody]int productId)
         {
-            double d =RealData.order1.AllProducts.Find(item => item.Id == productId).Price;
-            RealData.order1.SumBuying += d;
+            double d =currentOrder.AllProducts.Find(item => item.Id == productId).Price;
+            currentOrder.SumBuying += d;
         }
 
         // DELETE api/<BuyingController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)  
         {
-            RealData.order1.AllProducts.Remove(RealData.order1.AllProducts.Find(item => item.Id == id));
+            currentOrder.AllProducts.Remove(currentOrder.AllProducts.Find(item => item.Id == id));
         }
     }
 }

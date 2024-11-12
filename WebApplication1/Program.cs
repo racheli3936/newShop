@@ -1,4 +1,7 @@
 
+using WebApplication1.Controllers;
+using WebApplication1.data;
+
 namespace WebApplication1
 {
     public class Program
@@ -6,14 +9,12 @@ namespace WebApplication1
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             // Add services to the container.
-
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            //builder.Services.AddScoped<AllData,FakeData>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -22,9 +23,7 @@ namespace WebApplication1
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
 

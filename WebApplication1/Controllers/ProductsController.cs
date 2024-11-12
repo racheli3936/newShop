@@ -7,40 +7,43 @@ namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ProductsController : ControllerBase
     {
         // GET: api/<ProductsController>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return RealData.products;
+            return RealData.Products;
         }
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
         public Product Get(int id)
         {
-            return RealData.products.Find(item => item.Id == id);
+            //RealData.products.Add(new Product(1, "milk", 10, 10, "fresh"));
+            return RealData.Products.Find(item => item.Id == id);
         }
 
         // POST api/<ProductsController>
         [HttpPost("/{id}/{numNews}")]
         public void Post([FromBody] int id,int numNews)
         {
-            RealData.products.Find(item => item.Id == id).Amount += numNews;
+            RealData.Products.Find(item => item.Id == id).Amount += numNews;
         }
 
         // PUT api/<ProductsController>/5
         [HttpPut("{product}")]
-        public void Put(  Product p1)
+        public void Put(Product p1)
         {
-            RealData.products.Add(p1);
+            RealData.Products.Add(p1);
         }
 
         // DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }

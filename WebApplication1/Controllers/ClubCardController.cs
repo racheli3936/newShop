@@ -11,7 +11,14 @@ namespace WebApplication1.Controllers
     public class ClubCardController : ControllerBase
     {
         int managerPassward = 123;
-   
+        AllData a;
+
+        public ClubCardController(AllData a)
+        {
+            this.a = a;
+        }
+
+
         // GET: api/<ClubCardController>
         [HttpGet]
         public List<ClubCard> Get()
